@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BANHANGModelStoreContainer" CdmEntityContainer="BANHANGEntities">
+    <EntitySetMapping Name="MENU_SP">
+      <EntityTypeMapping TypeName="BANHANGModel.MENU_SP">
+        <MappingFragment StoreEntitySet="MENU_SP">
+          <ScalarProperty Name="MN_ID" ColumnName="MN_ID" />
+          <ScalarProperty Name="MN_NHOM" ColumnName="MN_NHOM" />
+          <ScalarProperty Name="MN_LOAI" ColumnName="MN_LOAI" />
+          <ScalarProperty Name="MN_MOTA" ColumnName="MN_MOTA" />
+          <ScalarProperty Name="MN_STT" ColumnName="MN_STT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="BANHANGModel.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="SP_ID" ColumnName="SP_ID" />
+          <ScalarProperty Name="MN_ID" ColumnName="MN_ID" />
+          <ScalarProperty Name="SP_MA" ColumnName="SP_MA" />
+          <ScalarProperty Name="SP_TEN" ColumnName="SP_TEN" />
+          <ScalarProperty Name="SP_TENTM" ColumnName="SP_TENTM" />
+          <ScalarProperty Name="SP_DVT" ColumnName="SP_DVT" />
+          <ScalarProperty Name="SP_URLANH" ColumnName="SP_URLANH" />
+          <ScalarProperty Name="SP_GIABAN" ColumnName="SP_GIABAN" />
+          <ScalarProperty Name="SP_LUOTXEM" ColumnName="SP_LUOTXEM" />
+          <ScalarProperty Name="SP_MOTA" ColumnName="SP_MOTA" />
+          <ScalarProperty Name="SP_DTKT" ColumnName="SP_DTKT" />
+          <ScalarProperty Name="SP_NGAYTAO" ColumnName="SP_NGAYTAO" />
+          <ScalarProperty Name="SP_NHACC" ColumnName="SP_NHACC" />
+          <ScalarProperty Name="SP_MAUSAC" ColumnName="SP_MAUSAC" />
+          <ScalarProperty Name="SP_URLANH1" ColumnName="SP_URLANH1" />
+          <ScalarProperty Name="SP_URLANH2" ColumnName="SP_URLANH2" />
+          <ScalarProperty Name="SP_URLANH3" ColumnName="SP_URLANH3" />
+          <ScalarProperty Name="SP_STT" ColumnName="SP_STT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

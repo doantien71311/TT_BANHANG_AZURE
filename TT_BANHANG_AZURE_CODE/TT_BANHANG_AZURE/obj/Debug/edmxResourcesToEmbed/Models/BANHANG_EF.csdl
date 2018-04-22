@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANHANGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MENU_SP">
+    <Key>
+      <PropertyRef Name="MN_ID" />
+    </Key>
+    <Property Name="MN_ID" Type="Guid" Nullable="false" />
+    <Property Name="MN_NHOM" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MN_LOAI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MN_MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MN_STT" Type="Int32" />
+    <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_MN_SP_MENU_SP" FromRole="MENU_SP" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="SP_ID" />
+    </Key>
+    <Property Name="SP_ID" Type="Guid" Nullable="false" />
+    <Property Name="MN_ID" Type="Guid" />
+    <Property Name="SP_MA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SP_TEN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SP_TENTM" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SP_DVT" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SP_URLANH" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SP_GIABAN" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SP_LUOTXEM" Type="Int32" />
+    <Property Name="SP_MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SP_DTKT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SP_NGAYTAO" Type="DateTime" Precision="3" />
+    <Property Name="SP_NHACC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SP_MAUSAC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SP_URLANH1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SP_URLANH2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SP_URLANH3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SP_STT" Type="Int32" />
+    <NavigationProperty Name="MENU_SP" Relationship="Self.FK_SANPHAM_MN_SP_MENU_SP" FromRole="SANPHAM" ToRole="MENU_SP" />
+  </EntityType>
+  <Association Name="FK_SANPHAM_MN_SP_MENU_SP">
+    <End Role="MENU_SP" Type="Self.MENU_SP" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU_SP">
+        <PropertyRef Name="MN_ID" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="MN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BANHANGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MENU_SP" EntityType="Self.MENU_SP" />
+    <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+    <AssociationSet Name="FK_SANPHAM_MN_SP_MENU_SP" Association="Self.FK_SANPHAM_MN_SP_MENU_SP">
+      <End Role="MENU_SP" EntitySet="MENU_SP" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

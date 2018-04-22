@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANHANGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MENU_SP">
+    <Key>
+      <PropertyRef Name="MN_ID" />
+    </Key>
+    <Property Name="MN_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MN_NHOM" Type="nvarchar" MaxLength="200" />
+    <Property Name="MN_LOAI" Type="nvarchar" MaxLength="200" />
+    <Property Name="MN_MOTA" Type="nvarchar(max)" />
+    <Property Name="MN_STT" Type="int" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="SP_ID" />
+    </Key>
+    <Property Name="SP_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MN_ID" Type="uniqueidentifier" />
+    <Property Name="SP_MA" Type="nvarchar" MaxLength="50" />
+    <Property Name="SP_TEN" Type="nvarchar" MaxLength="200" />
+    <Property Name="SP_TENTM" Type="nvarchar" MaxLength="200" />
+    <Property Name="SP_DVT" Type="nvarchar" MaxLength="200" />
+    <Property Name="SP_URLANH" Type="nvarchar" MaxLength="500" />
+    <Property Name="SP_GIABAN" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SP_LUOTXEM" Type="int" />
+    <Property Name="SP_MOTA" Type="nvarchar(max)" />
+    <Property Name="SP_DTKT" Type="nvarchar" MaxLength="500" />
+    <Property Name="SP_NGAYTAO" Type="datetime" />
+    <Property Name="SP_NHACC" Type="nvarchar" MaxLength="200" />
+    <Property Name="SP_MAUSAC" Type="nvarchar" MaxLength="200" />
+    <Property Name="SP_URLANH1" Type="nvarchar" MaxLength="500" />
+    <Property Name="SP_URLANH2" Type="nvarchar" MaxLength="500" />
+    <Property Name="SP_URLANH3" Type="nvarchar" MaxLength="500" />
+    <Property Name="SP_STT" Type="int" />
+  </EntityType>
+  <Association Name="FK_SANPHAM_MN_SP_MENU_SP">
+    <End Role="MENU_SP" Type="Self.MENU_SP" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU_SP">
+        <PropertyRef Name="MN_ID" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="MN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BANHANGModelStoreContainer">
+    <EntitySet Name="MENU_SP" EntityType="Self.MENU_SP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_SANPHAM_MN_SP_MENU_SP" Association="Self.FK_SANPHAM_MN_SP_MENU_SP">
+      <End Role="MENU_SP" EntitySet="MENU_SP" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
